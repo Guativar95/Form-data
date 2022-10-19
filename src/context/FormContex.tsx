@@ -4,19 +4,19 @@ export interface FormProviderProps {
     children: React.ReactNode;
 }
 interface FormContextInterface {
-    credito: FormInterface,
-    guardarCredito: (credito: FormInterface) => {},
+    data: FormInterface,
+    saveData: (data: FormInterface) => {},
 }
 export const FormContext = createContext<FormContextInterface>({} as FormContextInterface);
 const InitialContext = (): FormContextInterface => {    
-    const [credito, setCredito] = useState<FormInterface>({} as FormInterface);
+    const [data, setData] = useState<FormInterface>({} as FormInterface);
     
-	const guardarCredito = (creditoBySave: FormInterface) => {
-        setCredito(creditoBySave);
+	const saveData = (dataBySave: FormInterface) => {
+        setData(dataBySave);
     }
     return {
-        credito,
-        guardarCredito
+        data,
+        saveData
     } as FormContextInterface;
 }
 export const FormProvider : React.FC<FormProviderProps> = ({ children }) => { 
